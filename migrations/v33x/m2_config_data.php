@@ -7,7 +7,7 @@
 *
 */
 
-namespace forumhulp\cronstatus\migrations\v33x;
+namespace boardtools\cronstatus\migrations\v33x;
 
 /**
  * Migration stage 3: Config data
@@ -23,7 +23,7 @@ class m2_config_data extends \phpbb\db\migration\migration
 	 */
 	static public function depends_on()
 	{
-		return array('\forumhulp\cronstatus\migrations\v33x\m1_initial_schema');
+		return array('\boardtools\cronstatus\migrations\v33x\m1_initial_schema');
 	}
 
 	/**

@@ -7,7 +7,7 @@
 *
 */
 
-namespace forumhulp\cronstatus\event;
+namespace boardtools\cronstatus\event;
 
 /**
 * @ignore
@@ -70,7 +70,7 @@ class listener implements EventSubscriberInterface
 
 	public function load_cronstatus($event)
 	{
-		$this->user->add_lang_ext('forumhulp/cronstatus', 'cronstatus');
+		$this->user->add_lang_ext('boardtools/cronstatus', 'cronstatus');
 		$tasks = $this->cron_manager->get_tasks();
 
 		if (empty($tasks) || !$this->config['cron_lock'] || !$this->config['cronstatus_main_notice'])
@@ -113,7 +113,7 @@ class listener implements EventSubscriberInterface
 	{
 		if ($event['mode'] == 'settings')
 		{
-			$this->user->add_lang_ext('forumhulp/cronstatus', 'cronstatus');
+			$this->user->add_lang_ext('boardtools/cronstatus', 'cronstatus');
 			$display_vars = $event['display_vars'];
 			/* We add a new legend, but we need to search for the last legend instead of hard-coding */
 			$submit_key = array_search('ACP_SUBMIT_CHANGES', $display_vars['vars']);
@@ -197,7 +197,7 @@ class listener implements EventSubscriberInterface
 		/**
 		* Event to modify cron configuration variables before displaying cron information
 		*
-		* @event forumhulp.cronstatus.modify_cron_config
+		* @event boardtools.cronstatus.modify_cron_config
 		* @var	array	rows			Configuration array
 		* @var	string	cronlock		Name of the task that released cron lock (in last task date format)
 		* @var	string	last_task_date	Last task date of the task that released cron lock
@@ -205,7 +205,7 @@ class listener implements EventSubscriberInterface
 		* @changed 3.1.2-RC Added last_task_date variable
 		*/
 		$vars = array('rows', 'cronlock', 'last_task_date');
-		extract($this->phpbb_dispatcher->trigger_event('forumhulp.cronstatus.modify_cron_config', compact($vars)));
+		extract($this->phpbb_dispatcher->trigger_event('boardtools.cronstatus.modify_cron_config', compact($vars)));
 
 		return (!$get_last_task) ? $rows : true;
 	}
