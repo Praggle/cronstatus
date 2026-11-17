@@ -1,6 +1,6 @@
 services:
-    forumhulp.cronstatus.listener:
-        class: forumhulp\cronstatus\event\listener
+    boardtools.cronstatus.listener:
+        class: boardtools\cronstatus\event\listener
         arguments:
             - '@config'
             - '@controller.helper'

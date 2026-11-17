@@ -7,7 +7,7 @@
 *
 */
 
-namespace forumhulp\cronstatus\acp;
+namespace boardtools\cronstatus\acp;
 
 class cronstatus_module
 {
@@ -21,7 +21,7 @@ class cronstatus_module
 
 		$this->page_title = $user->lang['ACP_CRON_STATUS_TITLE'];
 		$this->tpl_name = 'acp_cronstatus';
-		$user->add_lang_ext('forumhulp/cronstatus', 'cronstatus');
+		$user->add_lang_ext('boardtools/cronstatus', 'cronstatus');
 		$action = $request->variable('action', '');
 
 		list($sk_config, $sd_config) = explode('|', $config['cronstatus_default_sort']);
@@ -37,8 +37,8 @@ class cronstatus_module
 		switch ($action)
 		{
 			case 'details':
-				$user->add_lang_ext('forumhulp/cronstatus', 'info_acp_cronstatus');
-				$phpbb_container->get('forumhulp.helper')->detail('forumhulp/cronstatus');
+				$user->add_lang_ext('boardtools/cronstatus', 'info_acp_cronstatus');
+				$phpbb_container->get('forumhulp.helper')->detail('boardtools/cronstatus');
 				$this->tpl_name = 'acp_ext_details';
 			break;
 
@@ -82,7 +82,7 @@ class cronstatus_module
 			$tasks = $task_array = array();
 			$tasks = $phpbb_container->get('cron.manager')->get_tasks();
 
-			$rows = $phpbb_container->get('forumhulp.cronstatus.listener')->get_cron_tasks($cronlock);
+			$rows = $phpbb_container->get('boardtools.cronstatus.listener')->get_cron_tasks($cronlock);
 			if (sizeof($tasks) && is_array($rows))
 			{
 				foreach ($tasks as $task)
@@ -130,7 +130,7 @@ class cronstatus_module
 					/**
 					* Event to modify task variables before displaying cron information
 					*
-					* @event forumhulp.cronstatus.modify_cron_task
+					* @event boardtools.cronstatus.modify_cron_task
 					* @var	object	task			Task object
 					* @var	object	task_name		Task name ($task->get_name())
 					* @var	object	name			Task name for new task date
@@ -140,7 +140,7 @@ class cronstatus_module
 					* @changed 3.1.1 Added new_task_date variable
 					*/
 					$vars = array('task', 'task_name', 'name', 'task_date', 'new_task_date');
-					extract($phpbb_dispatcher->trigger_event('forumhulp.cronstatus.modify_cron_task', compact($vars)));
+					extract($phpbb_dispatcher->trigger_event('boardtools.cronstatus.modify_cron_task', compact($vars)));
 
 					$task_array[] = array(
 						'task_sort'			=> ($task->is_ready()) ? 'ready' : (($task_date) ? 'not_ready' : 'never_started'),

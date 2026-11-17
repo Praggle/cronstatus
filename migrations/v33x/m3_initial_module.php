@@ -7,7 +7,7 @@
 *
 */
 
-namespace forumhulp\cronstatus\migrations\v33x;
+namespace boardtools\cronstatus\migrations\v33x;
 
 /**
 * Migration stage 4: Initial module
@@ -23,7 +23,7 @@ class m3_initial_module extends \phpbb\db\migration\migration
 	 */
 	static public function depends_on()
 	{
-		return array('\forumhulp\cronstatus\migrations\v33x\m1_initial_schema');
+		return array('\boardtools\cronstatus\migrations\v33x\m1_initial_schema');
 	}
 
 	/**
@@ -37,7 +37,7 @@ class m3_initial_module extends \phpbb\db\migration\migration
 		return array(
 			array('module.add', array(
 				'acp', 'ACP_FORUM_LOGS', array(
-					'module_basename'	=> '\forumhulp\cronstatus\acp\cronstatus_module',
+					'module_basename'	=> '\boardtools\cronstatus\acp\cronstatus_module',
 					'modes'				=> array('config'),
 				),
 			)),

@@ -7,7 +7,7 @@
 *
 */
 
-namespace forumhulp\cronstatus\migrations\v33x;
+namespace boardtools\cronstatus\migrations\v33x;
 
 use phpbb\db\migration\container_aware_migration;
 
@@ -66,7 +66,7 @@ class m1_initial_schema extends container_aware_migration
 			$this->container->get('forumhulp.helper')->update_files($this->data(), $this->revert);
 		} else
 		{
-			$this->container->get('user')->add_lang_ext('forumhulp/cronstatus', 'info_acp_cronstatus');
+			$this->container->get('user')->add_lang_ext('boardtools/cronstatus', 'info_acp_cronstatus');
 			trigger_error($this->container->get('user')->lang['FH_HELPER_NOTICE'], E_USER_WARNING);
 		}
 	}

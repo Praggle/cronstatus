@@ -7,18 +7,18 @@
 *
 */
 
-namespace forumhulp\cronstatus\acp;
+namespace boardtools\cronstatus\acp;
 
 class cronstatus_info
 {
 	function module()
 	{
 		return array(
-			'filename'		=> 'forumhulp\cronstatus\acp\cronstatus_module',
+			'filename'		=> 'boardtools\cronstatus\acp\cronstatus_module',
 			'title'			=> 'ACP_CRON_STATUS_TITLE',
 			'version'		=> '1.0.0',
 			'modes'			=> array(
-				'config'	=> array('title' => 'ACP_CRON_STATUS_TITLE', 'auth' => 'ext_forumhulp/cronstatus', 'cat' => array('ACP_CAT_MAINTENANCE')
+				'config'	=> array('title' => 'ACP_CRON_STATUS_TITLE', 'auth' => 'ext_boardtools/cronstatus', 'cat' => array('ACP_CAT_MAINTENANCE')
 				),
 			),
 		);
